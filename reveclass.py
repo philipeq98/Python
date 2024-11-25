@@ -9,19 +9,19 @@ def classify_item(row):
     
     # Ensure that the '正式科目名' is a string (handle NaN or non-string values)
     if isinstance(subject, str):
-        if '売上' in subject or '販売品' in subject:
-            return '売上収入'
+        if '加工' in subject:
+            return '加工収入'
         elif '賃貸料' in subject or 'レンタル' in subject:
             return 'レンタル収入'
+        elif '小山' in subject:
+            return '子会社間取引'
         elif '役務提供' in subject or '業務委託収入' in subject:
-            return '役務収入'
-        elif '売却益' in subject:
-            return '資本利益'
+            return 'その他'
+        elif '販売品' in subject:
+            return '販売品'
         elif 'その他' in subject or '雑収入' in subject:
             return 'その他'
-        elif '備品' in subject:
-            return '備品収入'
-        elif '医療' in subject or '寝具' in subject:
+        elif '医療' in subject:
             return '医療関連'
         else:
             return 'その他'
